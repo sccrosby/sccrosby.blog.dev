@@ -22,7 +22,7 @@ paginate = 5000 #frontpage pagination
   sidebar_avatar = "/img/me.jpg"
   about_me = true
 
-  featured_tags = false 
+  featured_tags = true 
   featured_condition_size = 2 # How many posts have to have a given tag to be featured (greater-than)
 
   image_404 = "images/404-bg.jpg"
@@ -35,8 +35,8 @@ paginate = 5000 #frontpage pagination
   href =  "/top/about/"
 
   [[params.addtional_menus]]
-  title =  "Oceanography"
-  href =  "/top/oceanography/"
+  title =  "Academic Research"
+  href =  "/top/research/"
 
   [params.social]
   rss            = true
