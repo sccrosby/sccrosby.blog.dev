@@ -18,5 +18,5 @@ First I do want to plug Rich Youngkin for putting together this great tutorial o
 - Test site development locally, use *./hugo.exe -D server*
 - To compile to public folder use *./hugo.exe -D*
 - To push to git use *./deploy.sh*
-- For writing markdown, this is a useful reference: https://www.markdownguide.org/tools/hugo/
+- For writing markdown, these are useful references: https://www.markdownguide.org/tools/hugo/, https://www.markdownguide.org/extended-syntax/
 

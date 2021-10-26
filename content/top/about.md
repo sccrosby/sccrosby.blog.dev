@@ -4,7 +4,7 @@ date: 2021-10-13T10:24:31-07:00
 draft: false
 ---
 
-<img src="/img/me.jpg" alt="Sean Crosby" align="left" width="300">
+<img src="/img/me.jpg" alt="Sean Crosby" align="left" width="300" style="border:15px solid white">
 
 I am a Coastal Oceanographer at the [U. S. Geological Survey](https://www.usgs.gov/) working with [Dr. Eric E. Grossman](https://cse.wwu.edu/geology/grossme2). Additionally, I am Research Affiliate at [Western Washington University](https://www.wwu.edu/) mentoring with graduate students in the [Geology](https://cse.wwu.edu/geology) and [Environmental Sciences](https://www.wwu.edu/majors/environmental-science) Departments and occasionally teach Oceanography of the Salish Sea (ESCI491) for the [Huxley College of the Environment](https://huxley.wwu.edu/).
 
