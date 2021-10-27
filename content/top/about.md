@@ -12,3 +12,4 @@ My research interests are inspired by the intersection of land and sea. I study 
 
 In February 2017 I completed my PhD in physical oceanography at the [Scripps Institution of Oceanography](https://scripps.ucsd.edu/). Under the guidance of [Dr. Robert T. Guza](https://www.researchgate.net/profile/R_Guza) my [dissertation](https://escholarship.org/uc/item/3pk2b7z7)  focused on obtaining accurate, high-resolution coastal wave predictions by assimilating wave buoy observations into regional wave models.
 
+[My C.V.](/pdf/CrosbyCV.pdf)

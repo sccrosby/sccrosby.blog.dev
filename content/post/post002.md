@@ -1,5 +1,5 @@
 ---
-title:       "P002 Working with Empirical Orthogonal Functions"
+title:       "P002 Working with empirical orthogonal functions"
 subtitle:    "Using complex EOFs (aka PCA) to find common wind patterns"
 #description: "Here I'll examine how to do a simple analysis with empirical orthogonal functions (EOFs), also known as principle component analysis (PCA), to find some typical wind patters in the Salish Sea, Washington USA. I'll use a 60-year series of modeled winds over the region (1950-2010) developed by scientist at University of Washington (UW)"
 date:        2021-10-13

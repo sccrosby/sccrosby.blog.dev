@@ -3,7 +3,7 @@ languageCode = 'en-us'
 title = 'Sean C. Crosby'
 theme = 'hugo-theme-cleanwhite'
 paginate = 5000 #frontpage pagination
-
+googleAnalytics = "291338764"
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
@@ -12,10 +12,10 @@ paginate = 5000 #frontpage pagination
 [params]
   #header_image = "images/main_go_wideandtall_darklayer.jpeg"
   header_image = "/img/islands.jpg"
-  title = "Software Engineering"
+  title = "Data Science"
   slogan = "\"All models are wrong, some are useful\" -George Box"
   SEOTitle = "Sean C. Crosby Blog"
-  keyword = "Python, Matlab, SQL, , Raspberry, Pi, Docker, Kubernetes, Go, Golang, Microservice"
+  keyword = "Python, Matlab, SQL, Oceanography, Machine Learning, Deep Learning, Neural Networks, Data Analysis, Inverse Theory"
  
   # Sidebar settings
   sidebar_about_description = "Father, Partner, Runner, Kitefoiler, Scientist"
