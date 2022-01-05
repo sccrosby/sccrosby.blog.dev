@@ -1,16 +1,14 @@
 ---
-title:       "P005 Gaining intuition for different classifiers"
-subtitle:    "Exploring decision space for simple to complex methods of classification using a toy dataset. We'll find that decision model boundaries will vary widely depending on model implementation and model settings"
+title:       "Can we visualize decision space for different classifiers?"
+subtitle:    "Visualizing decision space for simple to complex methods of classification with a toy dataset. We'll find that decision model boundaries will vary widely depending on model implementation and model settings, providing some intuition for classifier selection"
 description: ""
-date:        2021-12-31
+date:        2021-12-28
 author:      "Sean C. Crosby"
 image:       ""
 tags:        ["Data Science","Classification"]
 categories:  []
 draft:       false
 ---
-
-
 
 Support Vector Machines (SVM) are seemingly derived from a intuitive concept, drawing a decision boundary with the widest margin (aka gutter, street, etc.). While this only really applies to the linear problem in which the data are indeed separable, I find it particularly helpful in visualizing the decision space of the model. Unlike a random forest or multi-layer neural network, it is easy to picture model space. While not a novel idea in the slightest, this provoked me to consider decision space for several classification algorithms to hopefully gain insight into other techniques, and with this insight select appropriate methods for future questions.
 
@@ -62,7 +60,7 @@ The neural network, here, has the largest number of trained parameters by far, a
 
 ![mlp network](/img/eda006_fig08.png)
 
-### Increasing samples (data)
+### Adding data
 
 Varying models and some of their parameters was interesting, but we can also vary the dataset size. In general, adding data tends to improve the decision space of the model. Interestingly, in this case, the models that vary the least with additional data are the linear and non-linear SVC and MLP network. I'd probably argue that the non-linear SVC may look the best, but with a train-dev-test approach I would not want to say what model is truly best. Clearly the solutions between models are different and do not tend to converge to a uniform solution with additional data (at least in the low data density regions), and that is what I find most interesting. 
 

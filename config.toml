@@ -13,7 +13,7 @@ googleAnalytics = "G-L99LTDN52E"
   #header_image = "images/main_go_wideandtall_darklayer.jpeg"
   header_image = "/img/islands.jpg"
   title = "Data Science"
-  slogan = "\"All models are wrong, some are useful\" -George Box"
+  slogan = ""
   SEOTitle = "Sean C. Crosby Blog"
   keyword = "Python, Matlab, SQL, Oceanography, Machine Learning, Deep Learning, Neural Networks, Data Analysis, Inverse Theory"
  
