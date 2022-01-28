@@ -56,14 +56,48 @@ Exactly how much improvement was observed? Well we can estimate that, again as a
 
 ![MLP difference with Linear Reg](/img/mlwwcoast_ver1_fig03.png)
 
+### Woah, let's back up a little 
+
+So far we see that we can make some skill improvements over typical model forecasts by training on prior observations and future forecasts with a linear regression, and finding some added skill moving to a neural network, but let's come back to the linear problem and ask a few simpler questions, such as do we need all the inputs we are providing? Should we include the historical forecast as well? What does each part of the feature puzzle bring us in terms of skill as a function of forecast hour?
+
+To take a look at these questions I've created several linear models with varying inputs, ranging from just the yearly average, to including both the historical forecast, historical observations, and future forecast. Now the plots below shows all these combinations with the right plot just a zoom in on the y-axis to see the differences between the best models a little more clearly. 
+
+![Linear regression with varying inputs](/img/mlwwcoast_ver2_fig01.png)
+
+Let's start with the worst models. First training with just the yearly average estimate does a poor job, to no surprise with an error of about 3.9 m/s. This is a far cry from the original forecast error around 1.72 m/s (black line). Now similarly bad is the model trained on the history forecast residuals. By residuals I mean the errors in the forecast in the last 24-hours, e.g. forecast - observations. This at first seems surprising, but the model has little context for which to learn from just the past errors with no reference to the current wind speed magnitude at all. You really can't do much with the error term alone. Now the next thing to try is just the observations (orange). Here, we have good skill at forecast hour 1 and 2, with skill much worse in the preceding hours. Again, this is intuitive as the model probably is guessing that wind conditions are similar to the latest hour, which works for a short time.
+
+Now, what about just providing the model future forecasts? In this case we see a relatively constant RMSE around 1.5 m/s. This is not surprising as we created mock forecast from hindcast that therefore have similar skill for all forecast hours, however, what is surprising is that this skill is higher than the forest itself, and higher than the bias-removed forecast. Clearly some averaging is happening here that is helpful.
+
+Now, we start to see how our more general linear model starts to put together the pieces. By including both prior observations and future forecasts we get a combination of improvement at early hours and at later forecast hours. Various combinations of observations, history forecast residuals, and future forecast hours result in similar curves, with best results given the larger number of parameters. We are not necessarily over-fitting, however, because these results are derived from the test set. 
+
+Since we have a linear model we can explore it's coefficients relatively easily. What of these inputs are actually useful? First let's just consider the relatively simpler linear regression with historical observations and future forecasts. Taking a look at the coefficients (here negatives are historical observations, positives the forecast hours) we see a relatively inutitive set of coefficients for various forecast predictions.
+
+![Linear regression with varying inputs](/img/mlwwcoast_ver2_fig02.png)
+
+Here for forecast hour 1 the coeficient of hour 0, the latest observation, is 0.65, or in other words, the regression would like 65% of this hour followed by a little bit of the most recent forecasts. For later forecasts we see less reliance on the latest observation and more reliance on the forecast hours nearby those forecast hours themselves. Now a linear regression with an L1 penalty and a little regularization shows us which coefficients are actually useful.
+
+![Linear regression with varying inputs](/img/mlwwcoast_ver2_fig03.png)
+
+Here, we see that indeed the model cares only for the latest observation, the first forecast hour, and then an average of the forecast hours surrounding the desired prediction forecast. The shape of this averaging is relatively consistent and interestingly asymmetric. This is actually the preferred averaging window that should, in theory, improve the forecasts! Interesting, and I wonder how it might vary from observation location to observation location. What is also quite surprising is that earlier observations are not useful. 
+
+Now that we explored the linear regression in a bit more detail let's go back to the multi-layer-perceptron model (aka neural net) and start with the inputs from our best linear model, that is observations + historical forecast + future forecast. I think we can conclude that the average daily wind speed was not useful. Using default settings that include RELU activation, adam for the solver, a small amount of regularization (.0001) let's try varying the amount of layers and their nodes. While training becomes a bit slow (about 5-minutes for the largest network) we can see clearly that deeper networks with an increasing number of nodes appear to reduce RMSE, increasing prediction skill. And this improvement is relatively constant across forecast hour, which is a pleasant surprise suggesting that possibly we should consider predicting farther than 24-hours out. What is also clear is that the models are indeed over-fitting as training errors are much lower than test errors. 
+
+![Linear regression with varying inputs](/img/mlwwcoast_ver2_fig04.png)
+
+
+
 ### Next steps
 
 This cursory examination suggests there is potential to reduce forecast errors and several avenues for further exploration including
+- Examine linear coefficients for a model with history forecast as well (or residuals)
+- Explore regularization and/or other approaches to reducing over-fitting with MLP
+- Split into train-dev-test, and consider splitting by dates to avoid potential overlap
 - Modeling $u$ and $v$ wind components together
 - Adding wave forecast and observations to model inputs
-- Scaling inputs
+- Scaling inputs if adding wave and observations
+- Determine if MLPRegressor is automatically scaling, as it should be expecting 0-1 as inputs right?
+- Consider grid search or other random search for optimal hyper-parameters.
 - Exploring additional model architectures such as recurrent neural-nets
-- Optimizing hyper-parameters
 
 If you have ideas, send me an email!
 
